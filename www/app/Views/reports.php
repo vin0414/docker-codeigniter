@@ -116,13 +116,13 @@
                                                     <!--begin:Menu sub-->
                                                     <div  class="menu-sub menu-sub-lg-down-accordion menu-sub-lg-dropdown menu-active-bg px-lg-2 py-lg-4 w-lg-225px" >
                                                         <div  class="menu-item" ><!--begin:Menu link-->
-                                                            <a class="menu-link"  href=""  >
+                                                            <a class="menu-link"  href="<?=site_url('users')?>"  >
                                                                 <span  class="menu-bullet" ><span class="bullet bullet-dot"></span></span>
                                                                 <span  class="menu-title" >User List</span>
                                                             </a><!--end:Menu link-->
                                                         </div><!--end:Menu item-->
                                                         <div  class="menu-item" ><!--begin:Menu link-->
-                                                            <a class="menu-link"  href=""  >
+                                                            <a class="menu-link"  href="<?=site_url('new-account')?>"  >
                                                                 <span  class="menu-bullet" ><span class="bullet bullet-dot"></span></span>
                                                                 <span  class="menu-title" >Add User</span>
                                                             </a><!--end:Menu link-->
@@ -448,33 +448,8 @@
                                         <span  class="menu-icon" >
                                             <i class="fa-solid fa-chart-simple"></i>
                                         </span>
-                                        <span class="menu-title" >Summary</span>
+                                        <span class="menu-title" >Generate Reports</span>
                                     </a><!--end:Menu link-->
-                                </div><!--end:Menu item-->
-                                <!--begin:Menu item-->
-                                <div  data-kt-menu-trigger="{default: 'click', lg: 'hover'}" data-kt-menu-placement="bottom-start"  class="menu-item menu-lg-down-accordion me-0 me-lg-2" >
-                                    <!--begin:Menu link-->
-                                    <span class="menu-link">
-                                        <span  class="menu-icon" ><i class="fa-solid fa-toolbox"></i></span>
-                                        <span  class="menu-title" >My Widgets</span><span  class="menu-arrow" ></span>
-                                    </span><!--end:Menu link-->
-                                    <!--begin:Menu sub-->
-                                    <div  class="menu-sub menu-sub-lg-down-accordion menu-sub-lg-dropdown px-lg-2 py-lg-4 w-lg-200px" >
-                                        <!--begin:Menu item-->
-                                        <div  class="menu-item" ><!--begin:Menu link-->
-                                            <a class="menu-link"  href="" >
-                                                <span  class="menu-icon" ><i class="fa-solid fa-list-check"></i></span>
-                                                <span  class="menu-title" >Add Task</span>
-                                            </a><!--end:Menu link-->
-                                        </div><!--end:Menu item-->
-                                        <!--begin:Menu item-->
-                                        <div  class="menu-item" ><!--begin:Menu link-->
-                                            <a class="menu-link"  href="">
-                                                <span  class="menu-icon" ><i class="fa-regular fa-calendar"></i></span>
-                                                <span  class="menu-title" >Task Calendar</span>
-                                            </a><!--end:Menu link-->
-                                        </div><!--end:Menu item-->
-                                    </div><!--end:Menu sub-->
                                 </div><!--end:Menu item-->		
                                 <!--begin:Menu item-->
                                 <div  class="menu-item" >
@@ -526,7 +501,7 @@
 					<!--begin::Filter-->
 				<div class="mb-4">
                     <a href="<?=site_url('upload')?>" class="btn btn-sm d-flex flex-stack border border-300 bg-gray-100i btn-color-gray-700 btn-active-color-gray-900 px-3 mb-2">               
-                        <span class="d-flex align-item-center"><i class="fa-solid fa-upload"></i>&nbsp;&nbsp;&nbsp;Upload  </span>         
+                        <span class="d-flex align-item-center"><i class="fa-solid fa-upload"></i>&nbsp;&nbsp;&nbsp;Upload File</span>         
                     </a> 
 					<!--begin::Items-->
 					<div class="m-0">
@@ -572,11 +547,19 @@
                     <!--begin:Menu item-->
                     <div  data-kt-menu-trigger="click"  class="menu-item menu-accordion show" ><!--begin:Menu link-->
                         <span class="menu-link"  >
-                            <span  class="menu-title"><b>Filter</b></span><span  class="menu-arrow" ></span>
+                            <span  class="menu-title"><b>Generate</b></span><span  class="menu-arrow" ></span>
                         </span><!--end:Menu link-->
                         <!--begin:Menu sub-->
                         <div  class="menu-sub menu-sub-accordion menu-state-gray-900 menu-fit open" >
                             <form method="GET" class="form w-100" id="frmFilter">
+                                <div class="fv-row mb-4">
+                                    <!--begin::Select2-->
+                                    <span  class="menu-title" >Region</span>
+                                    <select class="form-select mb-2" data-control="select2" data-hide-search="true" data-placeholder="Select an option" name="region">
+                                        <option value=""></option>
+                                    </select>
+                                    <!--end::Select2-->
+                                </div>
                                 <div class="fv-row mb-4">
                                     <!--begin::Date-->
                                     <span  class="menu-title" >From</span>

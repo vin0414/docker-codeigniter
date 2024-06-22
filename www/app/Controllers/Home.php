@@ -18,4 +18,17 @@ class Home extends BaseController
     {
         return view('reports');
     }
+
+    public function users()
+    {
+        $accountModel = new \App\Models\accountModel();
+        $account = $accountModel->findAll();
+        $data = ['account'=>$account];
+        return view('list-users',$data);
+    }
+
+    public function newAccount()
+    {
+        return view('new-account');
+    }
 }

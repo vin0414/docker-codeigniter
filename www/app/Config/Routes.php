@@ -37,6 +37,8 @@ $routes->group('',['filter'=>'AuthCheck'],function($routes)
 {
     $routes->get('/dashboard','Home::dashboard');
     $routes->get('/reports','Home::report');
+    $routes->get('/users','Home::users');
+    $routes->get('/new-account','Home::newAccount');
 });
 
 $routes->group('',['filter'=>'AlreadyLoggedIn'],function($routes)

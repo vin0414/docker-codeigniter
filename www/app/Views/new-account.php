@@ -2,7 +2,7 @@
 <html lang="en" >
     <!--begin::Head-->
     <head>
-        <title>ARP - Dashboard</title>
+        <title>ARP - New Account</title>
         <meta charset="utf-8"/>
         <meta name="description" content=""/>
         <meta name="keywords" content=""/>
@@ -116,7 +116,7 @@
                                                     <!--begin:Menu sub-->
                                                     <div  class="menu-sub menu-sub-lg-down-accordion menu-sub-lg-dropdown menu-active-bg px-lg-2 py-lg-4 w-lg-225px" >
                                                         <div  class="menu-item" ><!--begin:Menu link-->
-                                                            <a class="menu-link"  href="<?=site_url('users')?>">
+                                                            <a class="menu-link"  href="<?=site_url('users')?>"  >
                                                                 <span  class="menu-bullet" ><span class="bullet bullet-dot"></span></span>
                                                                 <span  class="menu-title" >User List</span>
                                                             </a><!--end:Menu link-->
@@ -348,9 +348,9 @@
                                 data-kt-menu="true"
                             >        
                                 <!--begin:Menu item-->
-                                <div  data-kt-menu-trigger="{default: 'click', lg: 'hover'}" data-kt-menu-placement="bottom-start"  class="menu-item here show " >
+                                <div  data-kt-menu-trigger="{default: 'click', lg: 'hover'}" class="menu-item" >
                                     <!--begin:Menu link-->
-                                    <a class="menu-link active"  href="<?=site_url('dashboard')?>"><span  class="menu-title" >Overview</span></a>
+                                    <a class="menu-link"  href="<?=site_url('dashboard')?>"><span  class="menu-title" >Overview</span></a>
                                     <!--end:Menu link-->
                                 </div><!--end:Menu item-->
                                 <!--begin:Menu item-->
@@ -378,6 +378,12 @@
                                     <div  class="menu-content" ><div class="menu-separator"></div></div><!--end:Menu content-->
                                 </div>
                                 <!--end:Menu item-->
+                                <!--begin:Menu item-->
+                                <div  class="menu-item " >
+                                    <!--begin:Menu link-->
+                                    <a class="menu-link active"  href="<?=site_url('new-account')?>"><span  class="menu-title" >New Account</span></a>
+                                    <!--end:Menu link-->
+                                </div><!--end:Menu item-->
                                 <!--begin:Menu item-->
                                 <div  class="menu-item flex-grow-1" ></div><!--end:Menu item-->
                                 <!--begin:Menu item-->
@@ -446,56 +452,11 @@
                                     <!--begin:Menu link-->
                                     <a class="menu-link active"  href="<?=site_url('dashboard')?>">
                                         <span  class="menu-icon" >
-                                            <i class="fa-solid fa-chart-simple"></i>
+                                            <i class="fa-solid fa-users"></i>
                                         </span>
-                                        <span class="menu-title" >Summary</span>
+                                        <span class="menu-title" >New Account</span>
                                     </a><!--end:Menu link-->
-                                </div><!--end:Menu item-->
-                                <!--begin:Menu item-->
-                                <div  data-kt-menu-trigger="{default: 'click', lg: 'hover'}" data-kt-menu-placement="bottom-start"  class="menu-item menu-lg-down-accordion me-0 me-lg-2" >
-                                    <!--begin:Menu link-->
-                                    <span class="menu-link">
-                                        <span  class="menu-icon" ><i class="fa-solid fa-toolbox"></i></span>
-                                        <span  class="menu-title" >My Widgets</span><span  class="menu-arrow" ></span>
-                                    </span><!--end:Menu link-->
-                                    <!--begin:Menu sub-->
-                                    <div  class="menu-sub menu-sub-lg-down-accordion menu-sub-lg-dropdown px-lg-2 py-lg-4 w-lg-200px" >
-                                        <!--begin:Menu item-->
-                                        <div  class="menu-item" ><!--begin:Menu link-->
-                                            <a class="menu-link"  href="" >
-                                                <span  class="menu-icon" ><i class="fa-solid fa-list-check"></i></span>
-                                                <span  class="menu-title" >Add Task</span>
-                                            </a><!--end:Menu link-->
-                                        </div><!--end:Menu item-->
-                                        <!--begin:Menu item-->
-                                        <div  class="menu-item" ><!--begin:Menu link-->
-                                            <a class="menu-link"  href="">
-                                                <span  class="menu-icon" ><i class="fa-regular fa-calendar"></i></span>
-                                                <span  class="menu-title" >Task Calendar</span>
-                                            </a><!--end:Menu link-->
-                                        </div><!--end:Menu item-->
-                                    </div><!--end:Menu sub-->
                                 </div><!--end:Menu item-->		
-                                <!--begin:Menu item-->
-                                <div  class="menu-item" >
-                                    <!--begin:Menu link-->
-                                    <a class="menu-link"  href="">
-                                        <span  class="menu-icon" >
-                                            <i class="fa-solid fa-print"></i>
-                                        </span>
-                                        <span class="menu-title" >Print</span>
-                                    </a><!--end:Menu link-->
-                                </div><!--end:Menu item-->
-                                <!--begin:Menu item-->
-                                <div  class="menu-item" >
-                                    <!--begin:Menu link-->
-                                    <a class="menu-link"  href="">
-                                        <span  class="menu-icon" >
-                                            <i class="fa-solid fa-download"></i>
-                                        </span>
-                                        <span class="menu-title" >Export</span>
-                                    </a><!--end:Menu link-->
-                                </div><!--end:Menu item-->
                             </div>
                             <!--end::Menu-->	
                         </div>	
@@ -543,69 +504,7 @@
 					</div>
 					<!--end::Items-->    
 				</div>
-				<!--end::Filter-->
-					
-				<!--begin::Main menu-->
-				<div 
-					class="
-						menu-sidebar 
-						menu 
-						menu-fit 
-						menu-column 
-						menu-rounded 
-						menu-title-gray-700 
-						menu-icon-gray-700
-						menu-arrow-gray-700 
-						fw-semibold 
-						fs-6 
-						align-items-stretch 
-						flex-grow-1  
-					" 
-					id="#kt_app_sidebar_menu" 
-					data-kt-menu="true"
-					data-kt-menu-expand="true">        
-                    <div  class="menu-item py-1" ><!--begin:Menu content-->
-                        <div  class="menu-content" >
-                            <div class="separator separator-dashed"></div>
-                        </div><!--end:Menu content-->
-                    </div><!--end:Menu item-->
-                    <!--begin:Menu item-->
-                    <div  data-kt-menu-trigger="click"  class="menu-item menu-accordion show" ><!--begin:Menu link-->
-                        <span class="menu-link"  >
-                            <span  class="menu-title"><b>Filter</b></span><span  class="menu-arrow" ></span>
-                        </span><!--end:Menu link-->
-                        <!--begin:Menu sub-->
-                        <div  class="menu-sub menu-sub-accordion menu-state-gray-900 menu-fit open" >
-                            <form method="GET" class="form w-100" id="frmFilter">
-                                <div class="fv-row mb-4">
-                                    <!--begin::Date-->
-                                    <span  class="menu-title" >From</span>
-                                    <input type="date" name="fromdate" class="form-control bg-transparent"/> 
-                                    <!--end::Date-->
-                                </div>
-                                <div class="fv-row mb-4">
-                                    <!--begin::Date-->
-                                    <span  class="menu-title" >To</span>
-                                    <input type="date" name="todate" class="form-control bg-transparent"/> 
-                                    <!--end::Date-->
-                                </div>
-                                <!--begin::Submit button-->
-                                <div class="d-grid mb-10">
-                                    <button type="submit" id="kt_sign_in_submit" class="btn btn-primary">
-                                        
-                                    <!--begin::Indicator label-->
-                                    <span class="indicator-label">
-                                        Apply Changes
-                                    </span>
-                                    <!--end::Indicator label-->        
-                                    </button>
-                                </div>
-                                <!--end::Submit button-->
-                            </form> 
-                        </div><!--end:Menu sub-->
-                    </div><!--end:Menu item-->
-                </div>
-				<!--end::Menu-->
+				<!--end::Filter-->			
 			</div>
 			<!--end::Sidebar wrapper-->    
 		</div>
@@ -618,19 +517,42 @@
                 <div id="kt_app_content" class="app-content  app-content-stretch " >
                     <!--begin::Content container-->
                     <div id="kt_app_content_container" class="app-container  container-fluid ">
-                            <!--begin::Products-->
-                            <div class="card card-flush">
-                                <!--begin::Card header-->
-                                <div class="card-header align-items-center py-5 gap-2 gap-md-5">
+                        <!--begin::Products-->
+                        <div class="card card-flush">
+                            <!--begin::Card header-->
+                            <div class="card-header align-items-center py-5 gap-2 gap-md-5">
+                                <!--begin::Card title-->
+                                <div class="card-title">
+                                    <h1 class="page-heading d-flex flex-column justify-content-center text-gray-900 fw-bold fs-3 m-0">
+                                        Registration
+                                    </h1>
                                 </div>
-                                <!--end::Card header-->
-
-                                <!--begin::Card body-->
-                                <div class="card-body pt-0">
-                                <!--end::Card body-->
+                                <!--end::Card title-->
+                                <!--begin::Card toolbar-->
+                                <div class="card-toolbar flex-row-fluid justify-content-end gap-5">
+                                    <!--begin::Add account-->
+                                    <a href="<?=site_url('users')?>" class="btn btn-primary">
+                                        <i class="fa-solid fa-arrow-left"></i>&nbsp;Back
+                                    </a>
+                                    <!--end::Add account-->
                                 </div>
-                            <!--end::Products-->        
+                                <!--end::Card toolbar-->
                             </div>
+                            <!--end::Card header-->
+
+                            <!--begin::Card body-->
+                            <div class="card-body pt-0">
+                                <form class="form w-100" method="POST" novalidate="novalidate" id="frmRegistration">
+                                    <div class="fv-row mb-8">
+                                        <!--begin::Email-->
+                                        <input type="email" placeholder="Email" name="email" autocomplete="off" class="form-control bg-transparent" required/> 
+                                        <!--end::Email-->
+                                    </div>
+                                </form>
+                            <!--end::Card body-->
+                            </div>
+                        <!--end::Products-->        
+                        </div>
                         <!--end::Content container-->
                     </div>
                 <!--end::Content-->	
@@ -638,12 +560,9 @@
                 </div>
                 <!--end::Content wrapper-->                          
             </div>
-            <!--end:::Main-->
-
-            
+            <!--end:::Main-->    
         </div>
         <!--end::Wrapper-->
-
         
             </div>
     <!--end::Page-->
