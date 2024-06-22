@@ -1,17 +1,4 @@
-
-
 <!DOCTYPE html>
-<!--
-Author: Keenthemes
-Product Name: MetronicProduct Version: 8.2.5
-Purchase: https://1.envato.market/EA4JP
-Website: http://www.keenthemes.com
-Contact: support@keenthemes.com
-Follow: www.twitter.com/keenthemes
-Dribbble: www.dribbble.com/keenthemes
-Like: www.facebook.com/keenthemes
-License: For each use you must have a valid license purchased only from above link in order to legally use the theme for your project.
--->
 <html lang="en" >
     <!--begin::Head-->
     <head>
@@ -20,7 +7,7 @@ License: For each use you must have a valid license purchased only from above li
         <meta name="description" content=""/>
         <meta name="keywords" content=""/>
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
-        <link rel="shortcut icon" href="assets/media/logos/favicon.ico"/>
+        <link rel="shortcut icon" href="assets/img/logo.png"/>
 
         <!--begin::Fonts(mandatory for all pages)-->
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,400,500,600,700"/>        <!--end::Fonts-->
@@ -34,6 +21,15 @@ License: For each use you must have a valid license purchased only from above li
                 window.top.location.replace(window.self.location.href);
             }
         </script>
+        <style>
+            body {
+                background-image: url('assets/img/background.jpg');
+            }
+
+            [data-bs-theme="dark"] body {
+                background-image: url('assets/img/background.jpg');
+            }
+        </style>
     </head>
     <!--end::Head-->
 
@@ -159,14 +155,9 @@ License: For each use you must have a valid license purchased only from above li
                                 
                             <!--begin::Indicator label-->
                             <span class="indicator-label">
-                                Sign In</span>
-                            <!--end::Indicator label-->
-
-                            <!--begin::Indicator progress-->
-                            <span class="indicator-progress">
-                                Please wait...    <span class="spinner-border spinner-border-sm align-middle ms-2"></span>
+                                Sign In
                             </span>
-                            <!--end::Indicator progress-->        
+                            <!--end::Indicator label-->        
                             </button>
                         </div>
                         <!--end::Submit button-->

@@ -2,7 +2,7 @@
 <html lang="en" >
     <!--begin::Head-->
     <head>
-        <title>ARP - Dashboard</title>
+        <title>ARP - Reports</title>
         <meta charset="utf-8"/>
         <meta name="description" content=""/>
         <meta name="keywords" content=""/>
@@ -348,9 +348,9 @@
                                 data-kt-menu="true"
                             >        
                                 <!--begin:Menu item-->
-                                <div  data-kt-menu-trigger="{default: 'click', lg: 'hover'}" data-kt-menu-placement="bottom-start"  class="menu-item here show " >
+                                <div  data-kt-menu-trigger="{default: 'click', lg: 'hover'}" class="menu-item" >
                                     <!--begin:Menu link-->
-                                    <a class="menu-link active"  href="<?=site_url('dashboard')?>"><span  class="menu-title" >Overview</span></a>
+                                    <a class="menu-link"  href="<?=site_url('dashboard')?>"><span  class="menu-title" >Overview</span></a>
                                     <!--end:Menu link-->
                                 </div><!--end:Menu item-->
                                 <!--begin:Menu item-->
@@ -360,7 +360,7 @@
                                 <!--begin:Menu item-->
                                 <div  class="menu-item " >
                                     <!--begin:Menu link-->
-                                    <a class="menu-link"  href="<?=site_url('reports')?>"><span  class="menu-title" >Reports</span></a>
+                                    <a class="menu-link active"  href="<?=site_url('reports')?>"><span  class="menu-title" >Reports</span></a>
                                     <!--end:Menu link-->
                                 </div><!--end:Menu item-->
                                 <!--begin:Menu item-->
