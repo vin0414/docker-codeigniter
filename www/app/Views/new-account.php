@@ -509,62 +509,115 @@
 			<!--end::Sidebar wrapper-->    
 		</div>
 		<!--end::Sidebar-->                
-            <!--begin::Main-->
-            <div class="app-main flex-column flex-row-fluid " id="kt_app_main">
-                <!--begin::Content wrapper-->
-                <div class="d-flex flex-column flex-column-fluid">
-                <!--begin::Content-->
-                <div id="kt_app_content" class="app-content  app-content-stretch " >
-                    <!--begin::Content container-->
-                    <div id="kt_app_content_container" class="app-container  container-fluid ">
-                        <!--begin::Products-->
-                        <div class="card card-flush">
-                            <!--begin::Card header-->
-                            <div class="card-header align-items-center py-5 gap-2 gap-md-5">
-                                <!--begin::Card title-->
-                                <div class="card-title">
-                                    <h1 class="page-heading d-flex flex-column justify-content-center text-gray-900 fw-bold fs-3 m-0">
-                                        Registration
-                                    </h1>
-                                </div>
-                                <!--end::Card title-->
-                                <!--begin::Card toolbar-->
-                                <div class="card-toolbar flex-row-fluid justify-content-end gap-5">
-                                    <!--begin::Add account-->
-                                    <a href="<?=site_url('users')?>" class="btn btn-primary">
-                                        <i class="fa-solid fa-arrow-left"></i>&nbsp;Back
-                                    </a>
-                                    <!--end::Add account-->
-                                </div>
-                                <!--end::Card toolbar-->
+        <!--begin::Main-->
+        <div class="app-main flex-column flex-row-fluid " id="kt_app_main">
+            <div class="d-flex flex-column flex-column-fluid">
+                <!--begin::Toolbar-->
+                <div id="kt_app_toolbar" class="app-toolbar  pt-10 mb-0 ">                        
+                    <!--begin::Toolbar container-->
+                    <div id="kt_app_toolbar_container" class="app-container  container-fluid d-flex align-items-stretch ">
+                        <!--begin::Toolbar wrapper-->
+                        <div class="app-toolbar-wrapper d-flex flex-stack flex-wrap gap-4 w-100">
+                            <!--begin::Page title-->
+                            <div class="page-title d-flex flex-column justify-content-center gap-1 me-3">
+                                <!--begin::Title-->
+                                <h1 class="page-heading d-flex flex-column justify-content-center text-gray-900 fw-bold fs-3 m-0">
+                                Registration
+                                </h1>
+                                <!--end::Title-->
+                                <!--begin::Breadcrumb-->
+                                <ul class="breadcrumb breadcrumb-separatorless fw-semibold fs-7 my-0">
+                                    <!--begin::Item-->
+                                    <li class="breadcrumb-item text-muted">
+                                        <a href="<?=site_url('/dashboard')?>" class="text-muted text-hover-primary">
+                                        Dashboard                            
+                                        </a>
+                                    </li>
+                                    <!--end::Item-->
+                                    <!--begin::Item-->
+                                    <li class="breadcrumb-item">
+                                        <span class="bullet bg-gray-500 w-5px h-2px"></span>
+                                    </li>
+                                    <!--end::Item-->                 
+                                    <!--begin::Item-->
+                                    <li class="breadcrumb-item text-muted">
+                                        New Account                                            
+                                    </li>
+                                    <!--end::Item-->                     
+                                </ul>
+                                <!--end::Breadcrumb-->
                             </div>
-                            <!--end::Card header-->
-
-                            <!--begin::Card body-->
-                            <div class="card-body pt-0">
-                                <form class="form w-100" method="POST" novalidate="novalidate" id="frmRegistration">
+                            <!--end::Page title-->   
+                            <!--begin::Actions-->
+                            <div class="d-flex align-items-center gap-2 gap-lg-3">
+                                <a href="<?=site_url('users')?>" class="btn btn-sm btn-flex btn-primary">
+                                    <i class="fa-solid fa-arrow-left fs-4"></i>Back
+                                </a>          
+                            </div>
+                            <!--end::Actions-->
+                        </div>
+                    <!--end::Toolbar wrapper-->        
+                    </div>
+                    <!--end::Toolbar container-->
+                </div>
+                <!--end::Toolbar-->  
+                <div id="kt_app_content" class="app-content  flex-column-fluid " >
+                    <div id="kt_app_content_container" class="app-container  container-fluid ">
+                        <form id="frmAccount" method="POST" class="form w-100">
+                            <div class="card card-flush py-4">
+                                <!--begin::Card header-->
+                                <div class="card-header">
+                                    <div class="card-title">
+                                        <h2>Account Information</h2>
+                                    </div>
+                                </div>
+                                <!--end::Card header-->
+                                <div class="card-body pt-0">
+                                    <?= csrf_field(); ?>
                                     <div class="fv-row mb-8">
                                         <!--begin::Email-->
-                                        <input type="email" placeholder="Email" name="email" autocomplete="off" class="form-control bg-transparent" required/> 
+                                        <label class="required form-label">Email Address</label>
+                                        <input type="email" placeholder="Email Address" name="email" autocomplete="off" class="form-control bg-transparent" required/> 
                                         <!--end::Email-->
                                     </div>
-                                </form>
-                            <!--end::Card body-->
+                                    <div class="d-flex flex-wrap gap-5 fv-row mb-8">
+                                        <div class="fv-row w-100 flex-md-root">
+                                            <label class="required form-label">Fullname</label>
+                                            <input type="text" placeholder="Fullname" name="fullname" autocomplete="off" class="form-control bg-transparent" required/> 
+                                        </div>
+                                        <div class="fv-row w-100 flex-md-root">
+                                            <label class="required form-label">Designation</label>
+                                            <input type="text" placeholder="Designation" name="designation" autocomplete="off" class="form-control bg-transparent" required/> 
+                                        </div>
+                                    </div>
+                                    <div class="fv-row mb-8">
+                                        <!--begin::Email-->
+                                        <label class="required form-label">System Role</label>
+                                        <select class="form-select mb-2" data-control="select2" data-hide-search="true" data-placeholder="Select a  role" name="role" required>
+                                            <option value=""></option>
+                                            <option>Administrator</option>
+                                            <option>Standard User</option>
+                                        </select>
+                                        <!--end::Email-->
+                                    </div>
+                                    <div class="fv-row mb-8">
+                                        <button type="submit" class="btn btn-primary" id="btnRegister">
+                                            <i class="fa-solid fa-floppy-disk"></i>&nbsp;Save Account
+                                        </button>
+                                        <button type="button" class="btn btn-primary" id="btnProgress" style="display:none;">
+                                            Please wait...    <span class="spinner-border spinner-border-sm align-middle ms-2"></span>
+                                        </button>
+                                    </div>
+                                </div>
                             </div>
-                        <!--end::Products-->        
-                        </div>
-                        <!--end::Content container-->
+                        </form>
                     </div>
-                <!--end::Content-->	
-
-                </div>
-                <!--end::Content wrapper-->                          
-            </div>
-            <!--end:::Main-->    
+                </div> 
+            </div>   
         </div>
         <!--end::Wrapper-->
         
-            </div>
+    </div>
     <!--end::Page-->
 </div>
 <!--end::App-->		
@@ -574,19 +627,52 @@
 		</div>
 		<!--end::Scrolltop-->
 		<!--begin::Global Javascript Bundle(mandatory for all pages)-->
-				<script src="assets/plugins/global/plugins.bundle.js"></script>
-				<script src="assets/js/scripts.bundle.js"></script>
-			<!--end::Global Javascript Bundle-->
+		<script src="assets/plugins/global/plugins.bundle.js"></script>
+		<script src="assets/js/scripts.bundle.js"></script>
+		<!--end::Global Javascript Bundle-->
 
 		<!--begin::Vendors Javascript(used for this page only)-->
-				<script src="assets/plugins/custom/datatables/datatables.bundle.js"></script>
-			<!--end::Vendors Javascript-->
+		<script src="assets/plugins/custom/datatables/datatables.bundle.js"></script>
+		<!--end::Vendors Javascript-->
 
 		<!--begin::Custom Javascript(used for this page only)-->
-				<script src="assets/js/widgets.bundle.js"></script>
-				<script src="assets/js/custom/widgets.js"></script>
-			<!--end::Custom Javascript-->
-	<!--end::Javascript-->
+		<script src="assets/js/widgets.bundle.js"></script>
+		<script src="assets/js/custom/widgets.js"></script>
+		<!--end::Custom Javascript-->
+        <script>
+            $('#frmAccount').on('submit',function(e)
+            {
+                e.preventDefault();
+                var data = $(this).serialize();
+                document.getElementById('btnRegister').style="display:none";
+                document.getElementById('btnProgress').style="display:block";
+                $.ajax({
+                    url:"<?=site_url('save-account')?>",method:"POST",data:data,
+                    success:function(response)
+                    {
+                        document.getElementById('btnRegister').style="display:block";
+                        document.getElementById('btnProgress').style="display:none";
+                        if(response==="success")
+                        {
+                            Swal.fire({
+                                title: "Great!",
+                                text: "Successfully added",
+                                icon: "success"
+                                });
+                            $('#frmAccount')[0].reset();
+                        }
+                        else
+                        {
+                            Swal.fire({
+                                title: "Invalid",
+                                text: response,
+                                icon: "warning"
+                                });
+                        }
+                    }
+                });
+            });
+        </script>
     </body>
     <!--end::Body-->
 </html>

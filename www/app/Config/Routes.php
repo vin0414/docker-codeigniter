@@ -29,9 +29,11 @@ $routes->set404Override();
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
-//function
+//authentication
 $routes->post('/auth','Auth::auth');
 $routes->get('/logout','Auth::logout');
+//user management
+$routes->post('/save-account','Home::saveAccount');
 
 $routes->group('',['filter'=>'AuthCheck'],function($routes)
 {
@@ -39,6 +41,7 @@ $routes->group('',['filter'=>'AuthCheck'],function($routes)
     $routes->get('/reports','Home::report');
     $routes->get('/users','Home::users');
     $routes->get('/new-account','Home::newAccount');
+    $routes->get('/edit-account/(:any)','Home::editAccount/$1');
 });
 
 $routes->group('',['filter'=>'AlreadyLoggedIn'],function($routes)

@@ -2,16 +2,16 @@
 <html lang="en" >
     <!--begin::Head-->
     <head>
-        <title>ARP - User Accounts</title>
+        <title>ARP - Edit Account</title>
         <meta charset="utf-8"/>
         <meta name="description" content=""/>
         <meta name="keywords" content=""/>
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
-        <link rel="shortcut icon" href="assets/img/logo.png"/>
+        <link rel="shortcut icon" href="/assets/img/logo.png"/>
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,400,500,600,700"/> 
-        <link href="assets/plugins/custom/datatables/datatables.bundle.css" rel="stylesheet" type="text/css"/>
-        <link href="assets/plugins/global/plugins.bundle.css" rel="stylesheet" type="text/css"/>
-        <link href="assets/css/style.bundle.css" rel="stylesheet" type="text/css"/>
+        <link href="/assets/plugins/custom/datatables/datatables.bundle.css" rel="stylesheet" type="text/css"/>
+        <link href="/assets/plugins/global/plugins.bundle.css" rel="stylesheet" type="text/css"/>
+        <link href="/assets/css/style.bundle.css" rel="stylesheet" type="text/css"/>
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     </head>
     <body  id="kt_app_body" data-kt-app-header-fixed="true" data-kt-app-header-fixed-mobile="true" data-kt-app-header-stacked="true" data-kt-app-header-primary-enabled="true" data-kt-app-header-secondary-enabled="true" data-kt-app-sidebar-enabled="true" data-kt-app-sidebar-fixed="true" data-kt-app-sidebar-push-toolbar="true" data-kt-app-sidebar-push-footer="true"  class="app-default" >
@@ -49,7 +49,7 @@
                                     <i class="fa-solid fa-bars"></i>	
                                 </button>
                                 <a href="/dashboard">
-                                    <img alt="Logo" src="assets/img/logo.png" class="mh-25px"/>
+                                    <img alt="Logo" src="/assets/img/logo.png" class="mh-25px"/>
                                 </a>
                             </div>
                             <div class="d-flex align-items-stretch" id="kt_app_header_menu_wrapper">
@@ -182,7 +182,7 @@
                                 data-kt-menu-trigger="{default: 'click', lg: 'hover'}" 
                                 data-kt-menu-attach="parent" 
                                 data-kt-menu-placement="bottom-end">
-                                <img src="assets/img/logo.png" alt="user"/>
+                                <img src="/assets/img/logo.png" alt="user"/>
 
                                 <span class="bullet bullet-dot bg-success h-6px w-6px position-absolute translate-middle mb-1 bottom-0 start-100 animation-blink"></span>
                             </div>
@@ -194,7 +194,7 @@
                             <div class="menu-content d-flex align-items-center px-3">
                                 <!--begin::Avatar-->
                                 <div class="symbol symbol-50px me-5">
-                                    <img alt="Logo" src="assets/img/logo.png"/>
+                                    <img alt="Logo" src="/assets/img/logo.png"/>
                                 </div>
                                 <!--end::Avatar-->
 
@@ -381,7 +381,7 @@
                                 <!--begin:Menu item-->
                                 <div  class="menu-item " >
                                     <!--begin:Menu link-->
-                                    <a class="menu-link active"  href="<?=site_url('users')?>"><span  class="menu-title" >Users Account</span></a>
+                                    <a class="menu-link active"  href="javascript:void(0);"><span  class="menu-title" >Edit Account</span></a>
                                     <!--end:Menu link-->
                                 </div><!--end:Menu item-->
                                 <!--begin:Menu item-->
@@ -454,29 +454,9 @@
                                         <span  class="menu-icon" >
                                             <i class="fa-solid fa-users"></i>
                                         </span>
-                                        <span class="menu-title" >User Accounts</span>
+                                        <span class="menu-title" >Edit Account</span>
                                     </a><!--end:Menu link-->
                                 </div><!--end:Menu item-->		
-                                <!--begin:Menu item-->
-                                <div  class="menu-item" >
-                                    <!--begin:Menu link-->
-                                    <a class="menu-link"  href="">
-                                        <span  class="menu-icon" >
-                                            <i class="fa-solid fa-print"></i>
-                                        </span>
-                                        <span class="menu-title" >Print</span>
-                                    </a><!--end:Menu link-->
-                                </div><!--end:Menu item-->
-                                <!--begin:Menu item-->
-                                <div  class="menu-item" >
-                                    <!--begin:Menu link-->
-                                    <a class="menu-link"  href="">
-                                        <span  class="menu-icon" >
-                                            <i class="fa-solid fa-download"></i>
-                                        </span>
-                                        <span class="menu-title" >Export</span>
-                                    </a><!--end:Menu link-->
-                                </div><!--end:Menu item-->
                             </div>
                             <!--end::Menu-->	
                         </div>	
@@ -529,124 +509,145 @@
 			<!--end::Sidebar wrapper-->    
 		</div>
 		<!--end::Sidebar-->                
-            <!--begin::Main-->
-            <div class="app-main flex-column flex-row-fluid " id="kt_app_main">
-                <!--begin::Content wrapper-->
-                <div class="d-flex flex-column flex-column-fluid">
-                <!--begin::Content-->
-                <div id="kt_app_content" class="app-content  app-content-stretch " >
-                    <!--begin::Content container-->
-                    <div id="kt_app_content_container" class="app-container  container-fluid ">
-                        <!--begin::Products-->
-                        <div class="card card-flush">
-                            <!--begin::Card header-->
-                            <div class="card-header align-items-center py-5 gap-2 gap-md-5">
-                                <!--begin::Card title-->
-                                <div class="card-title">
-                                    <!--begin::Search-->
-                                    <div class="d-flex align-items-center position-relative my-1">
-                                        <i class="fa-solid fa-magnifying-glass fs-3 position-absolute ms-4"></i>              
-                                        <input type="search" class="form-control form-control-solid w-250px ps-12" placeholder="Search Account" />
-                                    </div>
-                                    <!--end::Search-->
-                                </div>
-                                <!--end::Card title-->
-                                <!--begin::Card toolbar-->
-                                <div class="card-toolbar flex-row-fluid justify-content-end gap-5">
-                                    <!--begin::Add account-->
-                                    <a href="<?=site_url('new-account')?>" class="btn btn-primary">
-                                    <i class="fa-solid fa-plus"></i>&nbsp;New Account
-                                    </a>
-                                    <!--end::Add account-->
-                                </div>
-                                <!--end::Card toolbar-->
+        <!--begin::Main-->
+        <div class="app-main flex-column flex-row-fluid " id="kt_app_main">
+            <div class="d-flex flex-column flex-column-fluid">
+                <!--begin::Toolbar-->
+                <div id="kt_app_toolbar" class="app-toolbar  pt-10 mb-0 ">                        
+                    <!--begin::Toolbar container-->
+                    <div id="kt_app_toolbar_container" class="app-container  container-fluid d-flex align-items-stretch ">
+                        <!--begin::Toolbar wrapper-->
+                        <div class="app-toolbar-wrapper d-flex flex-stack flex-wrap gap-4 w-100">
+                            <!--begin::Page title-->
+                            <div class="page-title d-flex flex-column justify-content-center gap-1 me-3">
+                                <!--begin::Title-->
+                                <h1 class="page-heading d-flex flex-column justify-content-center text-gray-900 fw-bold fs-3 m-0">
+                                Update Account
+                                </h1>
+                                <!--end::Title-->
+                                <!--begin::Breadcrumb-->
+                                <ul class="breadcrumb breadcrumb-separatorless fw-semibold fs-7 my-0">
+                                    <!--begin::Item-->
+                                    <li class="breadcrumb-item text-muted">
+                                        <a href="<?=site_url('/dashboard')?>" class="text-muted text-hover-primary">
+                                        Dashboard                            
+                                        </a>
+                                    </li>
+                                    <!--end::Item-->
+                                    <!--begin::Item-->
+                                    <li class="breadcrumb-item">
+                                        <span class="bullet bg-gray-500 w-5px h-2px"></span>
+                                    </li>
+                                    <!--end::Item-->                 
+                                    <!--begin::Item-->
+                                    <li class="breadcrumb-item text-muted">
+                                        Edit Account                                            
+                                    </li>
+                                    <!--end::Item-->                     
+                                </ul>
+                                <!--end::Breadcrumb-->
                             </div>
-                            <!--end::Card header-->
-
-                            <!--begin::Card body-->
-                            <div class="card-body pt-0">
-                            <table class="table align-middle table-row-dashed fs-6 gy-5" id="kt_ecommerce_products_table">
-                                <thead>
-                                    <tr class="text-start text-gray-500 fw-bold fs-7 text-uppercase gs-0">
-                                        <th class="w-10px pe-2">
-                                            <div class="form-check form-check-sm form-check-custom form-check-solid me-3">
-                                                <input class="form-check-input" type="checkbox" data-kt-check="true" data-kt-check-target="#kt_ecommerce_products_table .form-check-input" value="1" />
-                                            </div>
-                                        </th>
-                                        <th class="min-w-100px">Email Address</th>
-                                        <th class="min-w-100px">Fullname</th>
-                                        <th class="min-w-100px">Designation</th>
-                                        <th class="min-w-100px">Roles</th>
-                                        <th class="min-w-100px">Status</th>
-                                        <th class="min-w-70px">Actions</th>
-                                    </tr>
-                                </thead>
-                                <tbody class="fw-semibold text-gray-600">
-                                <?php foreach($account as $row): ?>
-                                    <tr>
-                                        <td>
-                                            <div class="form-check form-check-sm form-check-custom form-check-solid">
-                                                <input class="form-check-input" type="checkbox" value="<?php echo $row['accountID'] ?>" />
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div class="ms-2">
-                                                <!--begin::Title-->
-                                                <a href="<?=site_url('edit-account/')?><?php echo $row['Token'] ?>" class="text-gray-800 text-hover-primary fs-5 fw-bold" data-kt-ecommerce-product-filter="product_name"><?php echo $row['EmailAddress'] ?></a>
-                                                <!--end::Title-->
-                                            </div>
-                                        </td>
-                                        <td class="pe-0">
-                                            <span class="fw-bold ms-3"><?php echo $row['Fullname'] ?></span>
-                                        </td>
-                                        <td class="pe-0">
-                                            <span class="fw-bold ms-3"><?php echo $row['Designation'] ?></span>
-                                        </td>
-                                        <td class="pe-0">
-                                            <span class="fw-bold ms-3"><?php echo $row['Role'] ?></span>
-                                        </td>
-                                        <td class="pe-0">
-                                            <?php if($row['Status']==1){ ?>
-                                                <div class="badge badge-light-success">Active</div>
-                                            <?php }else{ ?>
-                                                <div class="badge badge-light-danger">Inactive</div>
-                                            <?php } ?>
-                                        </td>
-                                        <td>
-                                            <a href="#" class="btn btn-sm btn-light btn-flex btn-center btn-active-light-primary" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
-                                                Actions <i class="fa-solid fa-caret-down fs-5 ms-1"></i>                   
-                                            </a>
-                                            <!--begin::Menu-->
-                                            <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-125px py-4" data-kt-menu="true">
-                                                <!--begin::Menu item-->
-                                                <div class="menu-item px-3">
-                                                    <a href="<?=site_url('edit-account/')?><?php echo $row['Token'] ?>" class="menu-link px-3">
-                                                        Edit
-                                                    </a>
-                                                </div>
-                                                <!--end::Menu item-->
-                                            </div>
-                                        </td>
-                                    </tr>
-                                <?php endforeach; ?>
-                                </tbody>
-                            </table>
-                            <!--end::Card body-->
+                            <!--end::Page title-->   
+                            <!--begin::Actions-->
+                            <div class="d-flex align-items-center gap-2 gap-lg-3">
+                                <a href="<?=site_url('users')?>" class="btn btn-sm btn-flex btn-primary">
+                                    <i class="fa-solid fa-arrow-left fs-4"></i>Back
+                                </a>          
                             </div>
-                        <!--end::Products-->        
+                            <!--end::Actions-->
                         </div>
-                        <!--end::Content container-->
+                    <!--end::Toolbar wrapper-->        
                     </div>
-                <!--end::Content-->	
-
+                    <!--end::Toolbar container-->
                 </div>
-                <!--end::Content wrapper-->                          
-            </div>
-            <!--end:::Main-->    
+                <!--end::Toolbar-->  
+                <div id="kt_app_content" class="app-content  flex-column-fluid " >
+                    <div id="kt_app_content_container" class="app-container container-fluid ">
+                        <div class="d-flex flex-column flex-lg-row gap-7">
+                            <div class="d-flex flex-column flex-row-fluid gap-7 gap-lg-10">
+                                <form id="frmAccount" method="POST" class="form w-100">
+                                    <div class="card card-flush py-4">
+                                        <!--begin::Card header-->
+                                        <div class="card-header">
+                                            <div class="card-title">
+                                                <h2>Account Information</h2>
+                                            </div>
+                                        </div>
+                                        <!--end::Card header-->
+                                        <div class="card-body pt-0">
+                                            <input type="hidden" name="accountID" value="<?=$account['accountID']?>"/>
+                                            <div class="fv-row mb-8">
+                                                <!--begin::Email-->
+                                                <label class="required form-label">Email Address</label>
+                                                <input type="email" value="<?=$account['EmailAddress']?>" name="email" autocomplete="off" class="form-control bg-transparent" required/> 
+                                                <!--end::Email-->
+                                            </div>
+                                            <div class="d-flex flex-wrap gap-5 fv-row mb-8">
+                                                <div class="fv-row w-100 flex-md-root">
+                                                    <label class="required form-label">Fullname</label>
+                                                    <input type="text" value="<?=$account['Fullname']?>" name="fullname" autocomplete="off" class="form-control bg-transparent" required/> 
+                                                </div>
+                                                <div class="fv-row w-100 flex-md-root">
+                                                    <label class="required form-label">Designation</label>
+                                                    <input type="text" value="<?=$account['Designation']?>" name="designation" autocomplete="off" class="form-control bg-transparent" required/> 
+                                                </div>
+                                            </div>
+                                            <div class="fv-row mb-8">
+                                                <!--begin::Email-->
+                                                <label class="required form-label">System Role</label>
+                                                <select class="form-select mb-2" data-control="select2" data-hide-search="true" data-placeholder="Select a  role" name="role" required>
+                                                    <option value=""></option>
+                                                    <option>Administrator</option>
+                                                    <option>Standard User</option>
+                                                </select>
+                                                <!--end::Email-->
+                                            </div>
+                                            <div class="fv-row mb-8">
+                                                <button type="submit" class="btn btn-primary" id="btnUpdate">
+                                                    <i class="fa-solid fa-floppy-disk"></i>&nbsp;Save Changes
+                                                </button>
+                                                <button type="button" class="btn btn-primary" id="btnProgress" style="display:none;">
+                                                    Please wait...    <span class="spinner-border spinner-border-sm align-middle ms-2"></span>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="d-flex flex-column gap-7 gap-lg-10 w-100 w-lg-400px mb-7 me-lg-10">
+                                <div class="card card-flush py-4">
+                                    <!--begin::Card header-->
+                                    <div class="card-header">
+                                        <div class="card-title">
+                                            <h2>Account Security</h2>
+                                        </div>
+                                    </div>
+                                    <!--end::Card header-->
+                                    <div class="card-body pt-0">
+                                        <form class="form w-100" id="frmReset">
+                                            <input type="hidden" name="accountID" value="<?=$account['accountID']?>"/>
+                                            <div class="fv-row mb-8">
+                                                <!--begin::Token-->
+                                                <label class="required form-label">Current Password</label>
+                                                <input type="text" name="password" autocomplete="off" class="form-control bg-transparent" value="<?=$account['Password']?>" readonly/> 
+                                                <!--end::Token-->
+                                            </div>
+                                            <div class="fv-row mb-8">
+                                                <button type="submit" class="btn btn-primary" id="btnReset">Reset Password</button>&nbsp;
+                                                <button type="button" class="btn btn-light-primary deactivate" value="<?=$account['accountID']?>">Deactivate Account</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> 
+            </div>   
         </div>
         <!--end::Wrapper-->
         
-            </div>
+    </div>
     <!--end::Page-->
 </div>
 <!--end::App-->		
@@ -656,19 +657,52 @@
 		</div>
 		<!--end::Scrolltop-->
 		<!--begin::Global Javascript Bundle(mandatory for all pages)-->
-				<script src="assets/plugins/global/plugins.bundle.js"></script>
-				<script src="assets/js/scripts.bundle.js"></script>
-			<!--end::Global Javascript Bundle-->
+		<script src="/assets/plugins/global/plugins.bundle.js"></script>
+		<script src="/assets/js/scripts.bundle.js"></script>
+		<!--end::Global Javascript Bundle-->
 
 		<!--begin::Vendors Javascript(used for this page only)-->
-				<script src="assets/plugins/custom/datatables/datatables.bundle.js"></script>
-			<!--end::Vendors Javascript-->
+		<script src="/assets/plugins/custom/datatables/datatables.bundle.js"></script>
+		<!--end::Vendors Javascript-->
 
 		<!--begin::Custom Javascript(used for this page only)-->
-				<script src="assets/js/widgets.bundle.js"></script>
-				<script src="assets/js/custom/widgets.js"></script>
-			<!--end::Custom Javascript-->
-	<!--end::Javascript-->
+		<script src="/assets/js/widgets.bundle.js"></script>
+		<script src="/assets/js/custom/widgets.js"></script>
+		<!--end::Custom Javascript-->
+        <script>
+            $('#frmAccount').on('submit',function(e)
+            {
+                e.preventDefault();
+                var data = $(this).serialize();
+                document.getElementById('btnUpdate').style="display:none";
+                document.getElementById('btnProgress').style="display:block";
+                $.ajax({
+                    url:"<?=site_url('update-account')?>",method:"POST",data:data,
+                    success:function(response)
+                    {
+                        document.getElementById('btnUpdate').style="display:block";
+                        document.getElementById('btnProgress').style="display:none";
+                        if(response==="success")
+                        {
+                            Swal.fire({
+                                title: "Great!",
+                                text: "Successfully added",
+                                icon: "success"
+                                });
+                            $('#frmAccount')[0].reset();
+                        }
+                        else
+                        {
+                            Swal.fire({
+                                title: "Invalid",
+                                text: response,
+                                icon: "warning"
+                                });
+                        }
+                    }
+                });
+            });
+        </script>
     </body>
     <!--end::Body-->
 </html>
