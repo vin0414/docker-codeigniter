@@ -554,8 +554,8 @@
                             <form method="GET" class="form w-100" id="frmFilter">
                                 <div class="fv-row mb-4">
                                     <!--begin::Select2-->
-                                    <span  class="menu-title" >Region</span>
-                                    <select class="form-select mb-2" data-control="select2" data-hide-search="true" data-placeholder="Select an option" name="region">
+                                    <span  class="menu-title" >Zone</span>
+                                    <select class="form-select mb-2" data-control="select2" data-hide-search="true" data-placeholder="Select Zone" name="zone">
                                         <option value=""></option>
                                     </select>
                                     <!--end::Select2-->

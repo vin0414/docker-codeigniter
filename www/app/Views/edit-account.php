@@ -597,8 +597,8 @@
                                                 <label class="required form-label">System Role</label>
                                                 <select class="form-select mb-2" data-control="select2" data-hide-search="true" data-placeholder="Select a  role" name="role" required>
                                                     <option value=""></option>
-                                                    <option>Administrator</option>
-                                                    <option>Standard User</option>
+                                                    <option <?php if($account['Role']=="Administrator") echo 'selected="selected"'; ?> value="Administrator">Administrator</option>
+                                                    <option <?php if($account['Role']=="Standard User") echo 'selected="selected"'; ?> value="Standard User">Standard User</option>
                                                 </select>
                                                 <!--end::Email-->
                                             </div>
@@ -629,12 +629,23 @@
                                             <div class="fv-row mb-8">
                                                 <!--begin::Token-->
                                                 <label class="required form-label">Current Password</label>
-                                                <input type="text" name="password" autocomplete="off" class="form-control bg-transparent" value="<?=$account['Password']?>" readonly/> 
+                                                <input type="password" name="password" autocomplete="off" class="form-control bg-transparent" value="<?=$account['Password']?>" readonly/> 
                                                 <!--end::Token-->
                                             </div>
-                                            <div class="fv-row mb-8">
-                                                <button type="submit" class="btn btn-primary" id="btnReset">Reset Password</button>&nbsp;
-                                                <button type="button" class="btn btn-light-primary deactivate" value="<?=$account['accountID']?>">Deactivate Account</button>
+                                            <div class="d-flex flex-wrap gap-2 fv-row mb-8">
+                                                <div class="fv-row w-100 flex-md-root">
+                                                    <button type="submit" class="btn btn-primary" id="btnReset">Reset Password</button>
+                                                    <button type="button" class="btn btn-primary" id="btnProgress2" style="display:none;">
+                                                        Please wait...    <span class="spinner-border spinner-border-sm align-middle ms-2"></span>
+                                                    </button>
+                                                </div>
+                                                <div class="fv-row w-100 flex-md-root">
+                                                    <?php if($account['Status']==1){ ?>
+                                                        <button type="button" class="btn btn-light-danger deactivate" value="<?=$account['accountID']?>">Disable Account</button>
+                                                    <?php }else {?>
+                                                        <button type="button" class="btn btn-light-danger activate" value="<?=$account['accountID']?>">Activate Account</button>
+                                                    <?php } ?>
+                                                </div>
                                             </div>
                                         </form>
                                     </div>
@@ -686,10 +697,9 @@
                         {
                             Swal.fire({
                                 title: "Great!",
-                                text: "Successfully added",
+                                text: "Successfully applied changes",
                                 icon: "success"
                                 });
-                            $('#frmAccount')[0].reset();
                         }
                         else
                         {
@@ -701,6 +711,100 @@
                         }
                     }
                 });
+            });
+
+            $('#frmReset').on('submit',function(e)
+            {
+                e.preventDefault();
+                var data = $(this).serialize();
+                document.getElementById('btnReset').style="display:none";
+                document.getElementById('btnProgress2').style="display:block";
+                $.ajax({
+                    url:"<?=site_url('reset')?>",method:"POST",data:data,
+                    success:function(response)
+                    {
+                        document.getElementById('btnReset').style="display:block";
+                        document.getElementById('btnProgress2').style="display:none";
+                        if(response==="success")
+                        {
+                            Swal.fire({
+                                title: "Great!",
+                                text: "Successfully applied changes",
+                                icon: "success"
+                                });
+                        }
+                        else
+                        {
+                            Swal.fire({
+                                title: "Invalid",
+                                text: response,
+                                icon: "warning"
+                                });
+                        }
+                    }
+                });
+            });
+
+            $(document).on('click','.deactivate',function(){
+                var confirmation = confirm("Do you want to deactivate this account?");
+                if(confirmation)
+                {
+                    $.ajax({
+                        url:"<?=site_url('deactivate')?>",method:"POST",
+                        data:{value:$(this).val()},
+                        success:function(response)
+                        {
+                            if(response==="success")
+                            {
+                                Swal.fire({
+                                    title: "Great!",
+                                    text: "Successfully applied changes",
+                                    icon: "success"
+                                });
+                                location.reload();
+                            }
+                            else
+                            {
+                                Swal.fire({
+                                    title: "Invalid",
+                                    text: response,
+                                    icon: "warning"
+                                });
+                            }
+                        }
+                    });
+                }
+            });
+
+            $(document).on('click','.activate',function(){
+                var confirmation = confirm("Do you want to activate this account?");
+                if(confirmation)
+                {
+                    $.ajax({
+                        url:"<?=site_url('activate')?>",method:"POST",
+                        data:{value:$(this).val()},
+                        success:function(response)
+                        {
+                            if(response==="success")
+                            {
+                                Swal.fire({
+                                    title: "Great!",
+                                    text: "Successfully applied changes",
+                                    icon: "success"
+                                });
+                                location.reload();
+                            }
+                            else
+                            {
+                                Swal.fire({
+                                    title: "Invalid",
+                                    text: response,
+                                    icon: "warning"
+                                });
+                            }
+                        }
+                    });
+                }
             });
         </script>
     </body>

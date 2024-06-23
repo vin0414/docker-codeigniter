@@ -34,11 +34,17 @@ $routes->post('/auth','Auth::auth');
 $routes->get('/logout','Auth::logout');
 //user management
 $routes->post('/save-account','Home::saveAccount');
+$routes->post('/update-account','Home::updateAccount');
+$routes->post('/deactivate','Home::deactivateAccount');
+$routes->post('/activate','Home::activateAccount');
+$routes->post('/reset','Home::reset');
+$routes->get('/search-account','Home::searchAccount');
 
 $routes->group('',['filter'=>'AuthCheck'],function($routes)
 {
     $routes->get('/dashboard','Home::dashboard');
     $routes->get('/reports','Home::report');
+    $routes->get('/branch-report','Home::branchReport');
     $routes->get('/users','Home::users');
     $routes->get('/new-account','Home::newAccount');
     $routes->get('/edit-account/(:any)','Home::editAccount/$1');

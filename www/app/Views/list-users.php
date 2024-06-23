@@ -546,13 +546,20 @@
                                     <!--begin::Search-->
                                     <div class="d-flex align-items-center position-relative my-1">
                                         <i class="fa-solid fa-magnifying-glass fs-3 position-absolute ms-4"></i>              
-                                        <input type="search" class="form-control form-control-solid w-250px ps-12" placeholder="Search Account" />
+                                        <input type="search" id="search" class="form-control form-control-solid w-500px ps-12" placeholder="Search Account" />
                                     </div>
                                     <!--end::Search-->
                                 </div>
                                 <!--end::Card title-->
                                 <!--begin::Card toolbar-->
                                 <div class="card-toolbar flex-row-fluid justify-content-end gap-5">
+                                    <!--begin::Add account-->
+                                    <button type="button" class="btn btn-light-primary">
+                                        <?php foreach($total as $row): ?>
+                                        <span id="total"><?php echo $row->total ?></span> Record(s)
+                                        <?php endforeach;?>
+                                    </button>
+                                    <!--end::Add account-->
                                     <!--begin::Add account-->
                                     <a href="<?=site_url('new-account')?>" class="btn btn-primary">
                                     <i class="fa-solid fa-plus"></i>&nbsp;New Account
@@ -565,14 +572,9 @@
 
                             <!--begin::Card body-->
                             <div class="card-body pt-0">
-                            <table class="table align-middle table-row-dashed fs-6 gy-5" id="kt_ecommerce_products_table">
+                            <table class="table align-middle table-row-dashed fs-6 gy-5" id="table">
                                 <thead>
                                     <tr class="text-start text-gray-500 fw-bold fs-7 text-uppercase gs-0">
-                                        <th class="w-10px pe-2">
-                                            <div class="form-check form-check-sm form-check-custom form-check-solid me-3">
-                                                <input class="form-check-input" type="checkbox" data-kt-check="true" data-kt-check-target="#kt_ecommerce_products_table .form-check-input" value="1" />
-                                            </div>
-                                        </th>
                                         <th class="min-w-100px">Email Address</th>
                                         <th class="min-w-100px">Fullname</th>
                                         <th class="min-w-100px">Designation</th>
@@ -581,14 +583,9 @@
                                         <th class="min-w-70px">Actions</th>
                                     </tr>
                                 </thead>
-                                <tbody class="fw-semibold text-gray-600">
+                                <tbody class="fw-semibold text-gray-600" id="tblaccount">
                                 <?php foreach($account as $row): ?>
                                     <tr>
-                                        <td>
-                                            <div class="form-check form-check-sm form-check-custom form-check-solid">
-                                                <input class="form-check-input" type="checkbox" value="<?php echo $row['accountID'] ?>" />
-                                            </div>
-                                        </td>
                                         <td>
                                             <div class="ms-2">
                                                 <!--begin::Title-->
@@ -668,7 +665,29 @@
 				<script src="assets/js/widgets.bundle.js"></script>
 				<script src="assets/js/custom/widgets.js"></script>
 			<!--end::Custom Javascript-->
-	<!--end::Javascript-->
+	    <!--end::Javascript-->
+        <script>
+            $('#search').keyup(function(){
+                var val = $(this).val();
+                $('#tblaccount').html("<tr><td colspan='6'><center>Searching...</center></td></tr>");
+                $.ajax({
+                    url:"<?=site_url('search-account')?>",method:"GET",
+                    data:{keyword:val},
+                    success:function(response)
+                    {
+                        if(response==="")
+                        {
+                            $('#tblaccount').html("<tr><td colspan='6'><center>No Record(s)</center></td></tr>");
+                        }
+                        else
+                        {
+                            $('#tblaccount').html(response);
+                        }
+                        var count = $('#tblaccount').children('tr').length;$('#total').html(count);
+                    }
+                });
+            });
+        </script>
     </body>
     <!--end::Body-->
 </html>
