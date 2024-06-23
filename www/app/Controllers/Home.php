@@ -178,4 +178,19 @@ class Home extends BaseController
         }
     }
 
+    public function zone()
+    {
+        return view('new-zone');
+    }
+
+    public function region()
+    {
+        return view('new-region');
+    }
+
+    public function branch()
+    {
+        return view('new-branch');
+    }
+
 }

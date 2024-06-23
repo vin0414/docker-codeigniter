@@ -130,19 +130,19 @@
                                                     </div><!--end:Menu sub-->
                                                 </div><!--end:Menu item-->
                                                 <div  class="menu-item" ><!--begin:Menu link-->
-                                                    <a class="menu-link"  href=""  >
+                                                    <a class="menu-link"  href="<?=site_url('zones')?>"  >
                                                         <span  class="menu-icon" ><i class="fa-solid fa-globe"></i></span>
                                                         <span  class="menu-title" >Zones</span>
                                                     </a><!--end:Menu link-->
                                                 </div><!--end:Menu item-->
                                                 <div  class="menu-item" ><!--begin:Menu link-->
-                                                    <a class="menu-link"  href=""  >
+                                                    <a class="menu-link"  href="<?=site_url('regions')?>"  >
                                                         <span  class="menu-icon" ><i class="fa-solid fa-map"></i></span>
                                                         <span  class="menu-title" >Regions</span>
                                                     </a><!--end:Menu link-->
                                                 </div><!--end:Menu item-->
                                                 <div  class="menu-item" ><!--begin:Menu link-->
-                                                    <a class="menu-link"  href=""  >
+                                                    <a class="menu-link"  href="<?=site_url('branches')?>"  >
                                                         <span  class="menu-icon" ><i class="fa-solid fa-shop"></i></span>
                                                         <span  class="menu-title" >Branches</span>
                                                     </a><!--end:Menu link-->
@@ -370,7 +370,7 @@
                                 </div><!--end:Menu item-->
                                 <!--begin:Menu item-->
                                 <div  class="menu-item " ><!--begin:Menu link-->
-                                    <a class="menu-link"  href="<?=site_url('branch-report')?>"><span  class="menu-title" >Branches</span></a>
+                                    <a class="menu-link"  href="<?=site_url('branch-report')?>"><span  class="menu-title" >Branch Report</span></a>
                                     <!--end:Menu link-->
                                 </div><!--end:Menu item-->
                                 <!--begin:Menu item-->
@@ -512,7 +512,7 @@
 					<!--begin::Items-->
 					<div class="m-0">
                         <!--begin::Item-->
-						<a href="<?=site_url('new-branch')?>" class="btn btn-sm px-3 border border-transparent btn-color-gray-700 btn-active-color-gray-900">               
+						<a href="<?=site_url('branches')?>" class="btn btn-sm px-3 border border-transparent btn-color-gray-700 btn-active-color-gray-900">               
                             <i class="fa-solid fa-plus"></i>&nbsp;&nbsp;New Branch           
 						</a>  
 						<!--end::Item-->
