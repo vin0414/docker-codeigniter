@@ -53,6 +53,7 @@ $routes->get('/fetch-branches','Home::fetchBranches');
 $routes->get('/search-branches','Home::searchBranches');
 $routes->post('/save-branch','Home::saveBranch');
 $routes->post('/delete-branch','Home::deleteBranch');
+$routes->post('/update-branch','Home::updateBranch');
 
 $routes->group('',['filter'=>'AuthCheck'],function($routes)
 {
@@ -65,6 +66,7 @@ $routes->group('',['filter'=>'AuthCheck'],function($routes)
     $routes->get('/zones','Home::zone');
     $routes->get('/regions','Home::region');
     $routes->get('/branches','Home::branch');
+    $routes->get('/edit-branch/(:any)','Home::editBranch/$1');
 });
 
 $routes->group('',['filter'=>'AlreadyLoggedIn'],function($routes)

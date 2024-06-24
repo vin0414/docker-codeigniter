@@ -371,6 +371,39 @@ class Home extends BaseController
         return view('new-branch',$data);
     }
 
+    public function editBranch($id)
+    {
+        $branchModel = new \App\Models\branchModel();
+        $branch = $branchModel->WHERE('branchID',$id)->first();
+        //zone
+        $zoneModel = new \App\Models\zoneModel();
+        $zone = $zoneModel->WHERE('zoneID',$branch['zoneID'])->first();
+        //region
+        $regionModel = new \App\Models\regionModel();
+        $region = $regionModel->WHERE('regionID',$branch['regionID'])->first();
+        $data = ['branch'=>$branch,'zone'=>$zone,'region'=>$region];
+        return view('edit-branch',$data);
+    }
+
+    public function updateBranch()
+    {
+        $branchModel = new \App\Models\branchModel();
+        $id = $this->request->getPost('branchID');
+        $zone = $this->request->getPost('zone');
+        $region = $this->request->getPost('region');
+        $branchName = $this->request->getPost('branchName');
+        $branchType = $this->request->getPost('branchType');
+        $code = $this->request->getPost('code');
+        $status = $this->request->getPost('status');
+
+        $values = [
+            'regionID'=>$region,'zoneID'=>$zone,'BranchName'=>$branchName,
+            'BranchType'=>$branchType,'BranchCode'=>$code,'Status'=>$status
+            ];
+        $branchModel->update($id,$values);
+        echo "success";
+    }
+
     public function fetchBranches()
     {
         $builder = $this->db->table('tblbranches a');
