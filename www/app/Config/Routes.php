@@ -48,7 +48,11 @@ $routes->get('/fetch-regions','Home::fetchRegions');
 $routes->get('/search-regions','Home::searchRegions');
 $routes->post('/save-region','Home::saveRegion');
 $routes->post('/delete-region','Home::deleteRegion');
+$routes->get('/list-of-regions','Home::listRegions');
 $routes->get('/fetch-branches','Home::fetchBranches');
+$routes->get('/search-branches','Home::searchBranches');
+$routes->post('/save-branch','Home::saveBranch');
+$routes->post('/delete-branch','Home::deleteBranch');
 
 $routes->group('',['filter'=>'AuthCheck'],function($routes)
 {

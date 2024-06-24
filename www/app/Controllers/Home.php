@@ -159,19 +159,9 @@ class Home extends BaseController
                     <?php } ?>
                 </td>
                 <td>
-                    <a href="#" class="btn btn-sm btn-light btn-flex btn-center btn-active-light-primary" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
-                        Actions <i class="fa-solid fa-caret-down fs-5 ms-1"></i>                   
+                    <a href="<?=site_url('edit-account/')?><?php echo $row->Token ?>" class="btn btn-light-primary btn-sm">
+                        <i class="fa-solid fa-pen-to-square"></i>&nbsp;Edit
                     </a>
-                    <!--begin::Menu-->
-                    <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-125px py-4" data-kt-menu="true">
-                        <!--begin::Menu item-->
-                        <div class="menu-item px-3">
-                            <a href="<?=site_url('edit-account/')?><?php echo $row->Token ?>" class="menu-link px-3">
-                                Edit
-                            </a>
-                        </div>
-                        <!--end::Menu item-->
-                    </div>
                 </td>
             </tr>
             <?php
@@ -357,14 +347,148 @@ class Home extends BaseController
         $builder->delete();
         echo "success";
     }
+
+    public function listRegions()
+    {
+        $val = $this->request->getGet('value');
+        $builder = $this->db->table('tblregion');
+        $builder->select('RegionName,regionID');
+        $builder->WHERE('zoneID',$val);
+        $data = $builder->get();
+        foreach($data->getResult() as $row)
+        {
+            ?>
+            <option value="<?php echo $row->regionID ?>"><?php echo $row->RegionName ?></option>
+            <?php
+        }
+    }
     
     public function branch()
     {
-        return view('new-branch');
+        $zoneModel = new \App\Models\zoneModel();
+        $zone = $zoneModel->findAll();
+        $data = ['zone'=>$zone];
+        return view('new-branch',$data);
     }
 
     public function fetchBranches()
     {
-        
+        $builder = $this->db->table('tblbranches a');
+        $builder->select('a.*,b.RegionName,c.Name');
+        $builder->join('tblregion b','b.regionID=a.regionID','LEFT');
+        $builder->join('tblzone c','c.zoneID=a.zoneID','LEFT');
+        $builder->groupBy('a.branchID')
+        ->orderBy('a.BranchCode','ASC')
+        ->orderBy('b.RegionName','ASC');
+        $data = $builder->get();
+        foreach($data->getResult() as $row)
+        {
+            ?>
+            <tr>
+                <td><?php echo $row->Name ?></td>
+                <td><?php echo $row->RegionName ?></td>
+                <td><?php echo $row->BranchName ?></td>
+                <td><?php echo $row->BranchCode ?></td>
+                <td><?php echo $row->BranchType ?></td>
+                <td>
+                    <?php if($row->Status==1){ ?>
+                        <span class="badge badge-light-success">Active</span>
+                    <?php }else{ ?>
+                        <span class="badge badge-light-danger">Inactive</span>
+                    <?php } ?>
+                </td>
+                <td>
+                    <a href="<?=site_url('edit-branch/')?><?php echo $row->branchID ?>" class="btn btn-light-primary btn-sm">
+                        <i class="fa-solid fa-pen-to-square"></i>
+                    </a>&nbsp;
+                    <button type="button" class="btn btn-light-primary btn-sm delete" value="<?php echo $row->branchID?>">
+                        <i class="fa-solid fa-trash"></i>
+                    </button>
+                </td>
+            </tr>
+            <?php
+        }
+    }
+
+    public function searchBranches()
+    {
+        $val = "%".$this->request->getGet('keyword')."%";
+        $builder = $this->db->table('tblbranches a');
+        $builder->select('a.*,b.RegionName,c.Name');
+        $builder->join('tblregion b','b.regionID=a.regionID','LEFT');
+        $builder->join('tblzone c','c.zoneID=a.zoneID','LEFT');
+        $builder->LIKE('a.BranchName',$val);
+        $builder->groupBy('a.branchID')
+        ->orderBy('a.BranchCode','ASC')
+        ->orderBy('b.RegionName','ASC');
+        $data = $builder->get();
+        foreach($data->getResult() as $row)
+        {
+            ?>
+            <tr>
+                <td><?php echo $row->Name ?></td>
+                <td><?php echo $row->RegionName ?></td>
+                <td><?php echo $row->BranchName ?></td>
+                <td><?php echo $row->BranchCode ?></td>
+                <td><?php echo $row->BranchType ?></td>
+                <td>
+                    <?php if($row->Status==1){ ?>
+                        <span class="badge badge-light-success">Active</span>
+                    <?php }else{ ?>
+                        <span class="badge badge-light-danger">Inactive</span>
+                    <?php } ?>
+                </td>
+                <td>
+                    <a href="<?=site_url('edit-branch/')?><?php echo $row->branchID ?>" class="btn btn-light-primary btn-sm">
+                        <i class="fa-solid fa-pen-to-square"></i>
+                    </a>&nbsp;
+                    <button type="button" class="btn btn-light-primary btn-sm delete" value="<?php echo $row->branchID?>">
+                        <i class="fa-solid fa-trash"></i>
+                    </button>
+                </td>
+            </tr>
+            <?php
+        }
+    }
+
+    public function saveBranch()
+    {
+        $branchModel = new \App\Models\branchModel();
+        $zone = $this->request->getPost('zone');
+        $region = $this->request->getPost('region');
+        $branchName = $this->request->getPost('branch_name');
+        $branchType = $this->request->getPost('branchType');
+        $code = $this->request->getPost('code');
+        if(empty($zone)||empty($region)||empty($branchName)||empty($branchType)||empty($code))
+        {
+            echo "Please fill in the form";
+        }
+        else
+        {
+            //validate if exist per region
+            $branch = $branchModel->WHERE('regionID',$region)->WHERE('BranchCode',$code)->first();
+            if(!empty($branch['BranchName']))
+            {
+                echo $branchName. " already added. Please try again";
+            }
+            else
+            {
+                $values = [
+                    'regionID'=>$region,'zoneID'=>$zone,'BranchName'=>$branchName,
+                    'BranchType'=>$branchType,'BranchCode'=>$code,'Status'=>1
+                    ];
+                $branchModel->save($values);
+                echo "success";
+            }
+        }
+    }
+
+    public function deleteBranch()
+    {
+        $val = $this->request->getPost('value');
+        $builder = $this->db->table('tblbranches');
+        $builder->WHERE('branchID',$val);
+        $builder->delete();
+        echo "success";
     }
 }

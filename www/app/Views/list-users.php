@@ -610,19 +610,9 @@
                                             <?php } ?>
                                         </td>
                                         <td>
-                                            <a href="#" class="btn btn-sm btn-light btn-flex btn-center btn-active-light-primary" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
-                                                Actions <i class="fa-solid fa-caret-down fs-5 ms-1"></i>                   
+                                            <a href="<?=site_url('edit-account/')?><?php echo $row['Token'] ?>" class="btn btn-light-primary btn-sm">
+                                            <i class="fa-solid fa-pen-to-square"></i>&nbsp;Edit
                                             </a>
-                                            <!--begin::Menu-->
-                                            <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-125px py-4" data-kt-menu="true">
-                                                <!--begin::Menu item-->
-                                                <div class="menu-item px-3">
-                                                    <a href="<?=site_url('edit-account/')?><?php echo $row['Token'] ?>" class="menu-link px-3">
-                                                        Edit
-                                                    </a>
-                                                </div>
-                                                <!--end::Menu item-->
-                                            </div>
                                         </td>
                                     </tr>
                                 <?php endforeach; ?>
