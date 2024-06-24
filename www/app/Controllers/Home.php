@@ -183,14 +183,188 @@ class Home extends BaseController
         return view('new-zone');
     }
 
-    public function region()
+    public function saveZone()
     {
-        return view('new-region');
+        $zoneModel = new \App\Models\zoneModel();
+        $val = $this->request->getPost('zone_name');
+        if(empty($val))
+        {
+            echo "Please enter new name";
+        }
+        else
+        {
+            $validation = $this->validate([
+                'zone_name'=>'is_unique[tblzone.Name]'
+            ]);
+
+            if(!$validation)
+            {
+                echo $val. " already exist. Please try again";
+            }
+            else
+            {
+                $values = ['Name'=>$val,'DateCreated'=>date('Y-m-d')];
+                $zoneModel->save($values);
+                echo "success";
+            }
+        }
     }
 
+    public function deleteZone()
+    {
+        $val = $this->request->getPost('value');
+        $builder = $this->db->table('tblzone');
+        $builder->WHERE('zoneID',$val);
+        $builder->delete();
+        echo "success";
+    }
+
+    //zone,region, branch functions
+    public function fetchZones()
+    {
+        $builder = $this->db->table('tblzone');
+        $builder->select('zoneID,Name,DateCreated');
+        $data = $builder->get();
+        foreach($data->getResult() as $row)
+        {
+            ?>
+            <tr>
+                <td><?php echo $row->Name ?></td>
+                <td><?php echo $row->DateCreated ?></td>
+                <td>
+                    <button type="button" class="btn btn-light-primary btn-sm delete" value="<?php echo $row->zoneID?>">
+                        <i class="fa-solid fa-trash"></i>&nbsp;Delete
+                    </button>
+                </td>
+            </tr>
+            <?php
+        }
+    }
+
+    public function searchZones()
+    {
+        $val = "%".$this->request->getGet('keyword')."%";
+        $builder = $this->db->table('tblzone');
+        $builder->select('zoneID,Name,DateCreated');
+        $builder->LIKE('Name',$val);
+        $data = $builder->get();
+        foreach($data->getResult() as $row)
+        {
+            ?>
+            <tr>
+                <td><?php echo $row->Name ?></td>
+                <td><?php echo $row->DateCreated ?></td>
+                <td>
+                    <button type="button" class="btn btn-light-primary btn-sm delete" value="<?php echo $row->zoneID?>">
+                        <i class="fa-solid fa-trash"></i>&nbsp;Delete
+                    </button>
+                </td>
+            </tr>
+            <?php
+        }
+    }
+
+    
+    public function region()
+    {
+        $zoneModel = new \App\Models\zoneModel();
+        $zone = $zoneModel->findAll();
+        $data = ['zone'=>$zone];
+        return view('new-region',$data);
+    }
+
+    public function fetchRegions()
+    {
+        $builder = $this->db->table('tblregion a');
+        $builder->select('a.RegionName,a.DateCreated,a.regionID,b.Name');
+        $builder->join('tblzone b','b.zoneID=a.zoneID','LEFT');
+        $data = $builder->get();
+        foreach($data->getResult() as $row)
+        {
+            ?>
+            <tr>
+                <td><?php echo $row->Name ?></td>
+                <td><?php echo $row->RegionName ?></td>
+                <td><?php echo $row->DateCreated ?></td>
+                <td>
+                    <button type="button" class="btn btn-light-primary btn-sm delete" value="<?php echo $row->regionID?>">
+                        <i class="fa-solid fa-trash"></i>&nbsp;Delete
+                    </button>
+                </td>
+            </tr>
+            <?php
+        }
+    }
+
+    public function searchRegions()
+    {
+        $val = "%".$this->request->getGet('keyword')."%";
+        $builder = $this->db->table('tblregion a');
+        $builder->select('a.RegionName,a.DateCreated,a.regionID,b.Name');
+        $builder->join('tblzone b','b.zoneID=a.zoneID','LEFT');
+        $builder->LIKE('a.RegionName',$val);
+        $data = $builder->get();
+        foreach($data->getResult() as $row)
+        {
+            ?>
+            <tr>
+                <td><?php echo $row->Name ?></td>
+                <td><?php echo $row->RegionName ?></td>
+                <td><?php echo $row->DateCreated ?></td>
+                <td>
+                    <button type="button" class="btn btn-light-primary btn-sm delete" value="<?php echo $row->regionID?>">
+                        <i class="fa-solid fa-trash"></i>&nbsp;Delete
+                    </button>
+                </td>
+            </tr>
+            <?php
+        }
+    }
+
+    public function saveRegion()
+    {
+        $regionModel = new \App\Models\regionModel();
+        $zone = $this->request->getPost('zone');
+        $regionName = $this->request->getPost('region_name');
+        if(empty($zone)||empty($regionName))
+        {
+            echo "Please fill in the form to continue";
+        }
+        else
+        {
+            $validation = $this->validate([
+                'region_name'=>'is_unique[tblregion.RegionName]'
+            ]);
+
+            if(!$validation)
+            {
+                echo $regionName. " already exist. Please try again";
+            }
+            else
+            {
+                $values = ['zoneID'=>$zone,'RegionName'=>$regionName,'DateCreated'=>date('Y-m-d')];
+                $regionModel->save($values);
+                echo "success";
+            }
+        }
+    }
+
+    public function deleteRegion()
+    {
+        $val = $this->request->getPost('value');
+        $builder = $this->db->table('tblregion');
+        $builder->WHERE('regionID',$val);
+        $builder->delete();
+        echo "success";
+    }
+    
     public function branch()
     {
         return view('new-branch');
     }
 
+    public function fetchBranches()
+    {
+        
+    }
 }

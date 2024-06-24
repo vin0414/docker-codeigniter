@@ -39,6 +39,16 @@ $routes->post('/deactivate','Home::deactivateAccount');
 $routes->post('/activate','Home::activateAccount');
 $routes->post('/reset','Home::reset');
 $routes->get('/search-account','Home::searchAccount');
+//branch,region,zone
+$routes->get('/fetch-zones','Home::fetchZones');
+$routes->get('/search-zones','Home::searchZones');
+$routes->post('/save-zone','Home::saveZone');
+$routes->post('/delete-zone','Home::deleteZone');
+$routes->get('/fetch-regions','Home::fetchRegions');
+$routes->get('/search-regions','Home::searchRegions');
+$routes->post('/save-region','Home::saveRegion');
+$routes->post('/delete-region','Home::deleteRegion');
+$routes->get('/fetch-branches','Home::fetchBranches');
 
 $routes->group('',['filter'=>'AuthCheck'],function($routes)
 {

@@ -667,7 +667,7 @@
                                 title: "Invalid",
                                 text: response,
                                 icon: "warning"
-                                });
+                            });
                         }
                     }
                 });

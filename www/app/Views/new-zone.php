@@ -380,7 +380,7 @@
                                 <!--end:Menu item-->
                                 <!--begin:Menu item-->
                                 <div  class="menu-item " ><!--begin:Menu link-->
-                                    <a class="menu-link active"  href="<?=site_url('zones')?>"><span  class="menu-title" >Zones</span></a>
+                                    <a class="menu-link active"  href="<?=site_url('zones')?>"><span  class="menu-title" >All Zones</span></a>
                                     <!--end:Menu link-->
                                 </div><!--end:Menu item-->
                                 <!--begin:Menu item-->
@@ -591,6 +591,9 @@
                                             </div>
                                             <div class="fv-row mb-8">
                                                 <button type="submit" class="btn btn-primary" id="btnSave">Save Entry</button>
+                                                <button type="button" class="btn btn-primary" id="btnProgress" style="display:none;">
+                                                    Please wait...    <span class="spinner-border spinner-border-sm align-middle ms-2"></span>
+                                                </button>
                                             </div>
                                         </form>
                                     </div>
@@ -601,7 +604,7 @@
                                     <div class="card-header">
                                         <div class="d-flex align-items-center position-relative my-1">
                                             <i class="fa-solid fa-magnifying-glass fs-3 position-absolute ms-4"></i>              
-                                            <input type="search" id="search" class="form-control form-control-solid w-100 ps-12" placeholder="Search" />
+                                            <input type="search" id="search" class="form-control form-control-solid w-500px ps-12" placeholder="Search" />
                                         </div>
                                     </div>
                                     <div class="card-body">
@@ -648,7 +651,111 @@
 				<script src="assets/js/widgets.bundle.js"></script>
 				<script src="assets/js/custom/widgets.js"></script>
 			<!--end::Custom Javascript-->
-	<!--end::Javascript-->
+	    <!--end::Javascript-->
+        <script>
+            $(document).ready(function(){
+                fetch();
+            });
+            function fetch()
+            {
+                $('#tblzone').html("<tr><td colspan='3'><center>Loading...</center></td></tr>");
+                $.ajax({
+                    url:"<?=site_url('fetch-zones')?>",method:"GET",
+                    success:function(response)
+                    {
+                        if(response==="")
+                        {
+                            $('#tblzone').html("<tr><td colspan='3'><center>No Record(s)</center></td></tr>");
+                        }
+                        else
+                        {
+                            $('#tblzone').html(response);
+                        }
+                    }
+                });
+            }
+
+            $('#search').keyup(function(){
+                $('#tblzone').html("<tr><td colspan='3'><center>Loading...</center></td></tr>");
+                $.ajax({
+                    url:"<?=site_url('search-zones')?>",method:"GET",
+                    data:{keyword:$(this).val()},success:function(response)
+                    {
+                        if(response==="")
+                        {
+                            $('#tblzone').html("<tr><td colspan='3'><center>No Record(s)</center></td></tr>");
+                        }
+                        else
+                        {
+                            $('#tblzone').html(response);
+                        }
+                    }
+                });
+            });
+
+            $('#frmZone').on('submit',function(e)
+            {
+                e.preventDefault();
+                var data = $(this).serialize();
+                document.getElementById('btnSave').style="display:none";
+                document.getElementById('btnProgress').style="display:block";
+                $.ajax({
+                    url:"<?=site_url('save-zone')?>",method:"POST",
+                    data:data,success:function(response)
+                    {
+                        document.getElementById('btnSave').style="display:block";
+                        document.getElementById('btnProgress').style="display:none";
+                        if(response==="success")
+                        {
+                            Swal.fire({
+                                title: "Great!",
+                                text: "Successfully added",
+                                icon: "success"
+                            });fetch();
+                            $('#frmZone')[0].reset();
+                        }
+                        else
+                        {
+                            Swal.fire({
+                                title: "Invalid!",
+                                text: response,
+                                icon: "warning"
+                            });
+                        }
+                    }
+                });
+            });
+
+            $(document).on('click','.delete',function()
+            {
+                var confirmation = confirm("Do you want to remove this selected zone?");
+                if(confirmation)
+                {
+                    $.ajax({
+                        url:"<?=site_url('delete-zone')?>",method:"POST",
+                        data:{value:$(this).val()},success:function(response)
+                        {
+                            if(response==="success")
+                            {
+                                Swal.fire({
+                                    title: "Great!",
+                                    text: "Successfully deleted",
+                                    icon: "success"
+                                });fetch();
+                            }
+                            else
+                            {
+                                Swal.fire({
+                                    title: "Invalid!",
+                                    text: response,
+                                    icon: "warning"
+                                });
+                            }
+                        }
+                    });
+                }
+            });
+        </script>
     </body>
     <!--end::Body-->
 </html>
