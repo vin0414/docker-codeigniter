@@ -101,7 +101,7 @@ class Home extends BaseController
     {
         $accountModel = new \App\Models\accountModel();
         $token = $this->request->getPost('csrf_test_name');
-        $email = $this->request->getPost('email');
+        $username = $this->request->getPost('username');
         $fullname = $this->request->getPost('fullname');
         $designation = $this->request->getPost('designation');
         $role  = $this->request->getPost('role');
@@ -109,7 +109,7 @@ class Home extends BaseController
         $defaultPassword = Hash::make('Mlhuillier1');
 
         $validation = $this->validate([
-            'email'=>'valid_email|is_unique[tblaccount.EmailAddress]'
+            'username'=>'is_unique[tblaccount.Username]'
         ]);
 
         if(!$validation)
@@ -118,7 +118,7 @@ class Home extends BaseController
         }
         else
         {
-            $values = ['EmailAddress'=>$email,'Password'=>$defaultPassword,'Fullname'=>$fullname,'Designation'=>$designation,'Status'=>$status,'Role'=>$role,'Token'=>$token];
+            $values = ['Username'=>$username,'Password'=>$defaultPassword,'Fullname'=>$fullname,'Designation'=>$designation,'Status'=>$status,'Role'=>$role,'Token'=>$token];
             $accountModel->save($values);
             echo "success";
         }
@@ -129,7 +129,7 @@ class Home extends BaseController
         $text = "%".$this->request->getGet('keyword')."%";
         $builder = $this->db->table('tblaccount');
         $builder->select('*');
-        $builder->LIKE('EmailAddress',$text);
+        $builder->LIKE('Fullname',$text);
         $data = $builder->get();
         foreach($data->getResult() as $row)
         {
@@ -138,7 +138,7 @@ class Home extends BaseController
                 <td>
                     <div class="ms-2">
                         <!--begin::Title-->
-                        <a href="<?=site_url('edit-account/')?><?php echo $row->Token ?>" class="text-gray-800 text-hover-primary fs-5 fw-bold" data-kt-ecommerce-product-filter="product_name"><?php echo $row->EmailAddress ?></a>
+                        <a href="<?=site_url('edit-account/')?><?php echo $row->Token ?>" class="text-gray-800 text-hover-primary fs-5 fw-bold" data-kt-ecommerce-product-filter="product_name"><?php echo $row->Username ?></a>
                         <!--end::Title-->
                     </div>
                 </td>
@@ -523,5 +523,10 @@ class Home extends BaseController
         $builder->WHERE('branchID',$val);
         $builder->delete();
         echo "success";
+    }
+
+    public function uploadFile()
+    {
+        return view('upload-file');
     }
 }

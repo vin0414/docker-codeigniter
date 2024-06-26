@@ -589,7 +589,7 @@
                                         <td>
                                             <div class="ms-2">
                                                 <!--begin::Title-->
-                                                <a href="<?=site_url('edit-account/')?><?php echo $row['Token'] ?>" class="text-gray-800 text-hover-primary fs-5 fw-bold" data-kt-ecommerce-product-filter="product_name"><?php echo $row['EmailAddress'] ?></a>
+                                                <a href="<?=site_url('edit-account/')?><?php echo $row['Token'] ?>" class="text-gray-800 text-hover-primary fs-5 fw-bold" data-kt-ecommerce-product-filter="product_name"><?php echo $row['Username'] ?></a>
                                                 <!--end::Title-->
                                             </div>
                                         </td>

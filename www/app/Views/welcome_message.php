@@ -125,7 +125,7 @@
                         <!--begin::Input group--->
                         <div class="fv-row mb-8">
                             <!--begin::Email-->
-                            <input type="email" placeholder="Email" name="email" autocomplete="off" class="form-control bg-transparent" required/> 
+                            <input type="text" placeholder="Username" name="username" autocomplete="off" class="form-control bg-transparent" required/> 
                             <!--end::Email-->
                         </div>
 

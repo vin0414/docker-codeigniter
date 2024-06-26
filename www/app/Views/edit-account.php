@@ -578,8 +578,8 @@
                                             <input type="hidden" name="accountID" value="<?=$account['accountID']?>"/>
                                             <div class="fv-row mb-8">
                                                 <!--begin::Email-->
-                                                <label class="required form-label">Email Address</label>
-                                                <input type="email" value="<?=$account['EmailAddress']?>" name="email" autocomplete="off" class="form-control bg-transparent" required/> 
+                                                <label class="required form-label">Username</label>
+                                                <input type="email" value="<?=$account['Username']?>" name="email" autocomplete="off" class="form-control bg-transparent" required/> 
                                                 <!--end::Email-->
                                             </div>
                                             <div class="d-flex flex-wrap gap-5 fv-row mb-8">

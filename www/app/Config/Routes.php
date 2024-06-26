@@ -67,6 +67,7 @@ $routes->group('',['filter'=>'AuthCheck'],function($routes)
     $routes->get('/regions','Home::region');
     $routes->get('/branches','Home::branch');
     $routes->get('/edit-branch/(:any)','Home::editBranch/$1');
+    $routes->get('/upload','Home::uploadFile');
 });
 
 $routes->group('',['filter'=>'AlreadyLoggedIn'],function($routes)

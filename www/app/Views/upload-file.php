@@ -2,7 +2,7 @@
 <html lang="en" >
     <!--begin::Head-->
     <head>
-        <title>ARP - New Account</title>
+        <title>ARP - Upload</title>
         <meta charset="utf-8"/>
         <meta name="description" content=""/>
         <meta name="keywords" content=""/>
@@ -381,7 +381,7 @@
                                 <!--begin:Menu item-->
                                 <div  class="menu-item " >
                                     <!--begin:Menu link-->
-                                    <a class="menu-link active"  href="<?=site_url('new-account')?>"><span  class="menu-title" >New Account</span></a>
+                                    <a class="menu-link active"  href="<?=site_url('upload')?>"><span  class="menu-title" >Upload</span></a>
                                     <!--end:Menu link-->
                                 </div><!--end:Menu item-->
                                 <!--begin:Menu item-->
@@ -452,9 +452,9 @@
                                     <!--begin:Menu link-->
                                     <a class="menu-link active"  href="<?=site_url('dashboard')?>">
                                         <span  class="menu-icon" >
-                                            <i class="fa-solid fa-users"></i>
+                                            <i class="fa-solid fa-upload"></i>
                                         </span>
-                                        <span class="menu-title" >New Account</span>
+                                        <span class="menu-title" >Upload Data</span>
                                     </a><!--end:Menu link-->
                                 </div><!--end:Menu item-->		
                             </div>
@@ -522,7 +522,7 @@
                             <div class="page-title d-flex flex-column justify-content-center gap-1 me-3">
                                 <!--begin::Title-->
                                 <h1 class="page-heading d-flex flex-column justify-content-center text-gray-900 fw-bold fs-3 m-0">
-                                Registration
+                                Upload
                                 </h1>
                                 <!--end::Title-->
                                 <!--begin::Breadcrumb-->
@@ -541,20 +541,13 @@
                                     <!--end::Item-->                 
                                     <!--begin::Item-->
                                     <li class="breadcrumb-item text-muted">
-                                        New Account                                            
+                                        Upload                                            
                                     </li>
                                     <!--end::Item-->                     
                                 </ul>
                                 <!--end::Breadcrumb-->
                             </div>
                             <!--end::Page title-->   
-                            <!--begin::Actions-->
-                            <div class="d-flex align-items-center gap-2 gap-lg-3">
-                                <a href="<?=site_url('users')?>" class="btn btn-sm btn-flex btn-primary">
-                                    <i class="fa-solid fa-arrow-left fs-4"></i>Back
-                                </a>          
-                            </div>
-                            <!--end::Actions-->
                         </div>
                     <!--end::Toolbar wrapper-->        
                     </div>
@@ -563,54 +556,7 @@
                 <!--end::Toolbar-->  
                 <div id="kt_app_content" class="app-content  flex-column-fluid " >
                     <div id="kt_app_content_container" class="app-container  container-fluid ">
-                        <form id="frmAccount" method="POST" class="form w-100">
-                            <div class="card card-flush py-4">
-                                <!--begin::Card header-->
-                                <div class="card-header">
-                                    <div class="card-title">
-                                        <h2>Account Information</h2>
-                                    </div>
-                                </div>
-                                <!--end::Card header-->
-                                <div class="card-body pt-0">
-                                    <?= csrf_field(); ?>
-                                    <div class="fv-row mb-8">
-                                        <!--begin::Email-->
-                                        <label class="required form-label">Username</label>
-                                        <input type="text" placeholder="DELA****" name="username" autocomplete="off" class="form-control bg-transparent" required/> 
-                                        <!--end::Email-->
-                                    </div>
-                                    <div class="d-flex flex-wrap gap-5 fv-row mb-8">
-                                        <div class="fv-row w-100 flex-md-root">
-                                            <label class="required form-label">Fullname</label>
-                                            <input type="text" placeholder="Fullname" name="fullname" autocomplete="off" class="form-control bg-transparent" required/> 
-                                        </div>
-                                        <div class="fv-row w-100 flex-md-root">
-                                            <label class="required form-label">Designation</label>
-                                            <input type="text" placeholder="Designation" name="designation" autocomplete="off" class="form-control bg-transparent" required/> 
-                                        </div>
-                                    </div>
-                                    <div class="fv-row mb-8">
-                                        <!--begin::Email-->
-                                        <label class="required form-label">System Role</label>
-                                        <select class="form-select mb-2" data-control="select2" data-hide-search="true" data-placeholder="Select a  role" name="role" required>
-                                            <option value=""></option>
-                                            <option>Administrator</option>
-                                            <option>Standard User</option>
-                                        </select>
-                                        <!--end::Email-->
-                                    </div>
-                                    <div class="fv-row mb-8">
-                                        <button type="submit" class="btn btn-primary" id="btnRegister">
-                                            <i class="fa-solid fa-floppy-disk"></i>&nbsp;Save Account
-                                        </button>
-                                        <button type="button" class="btn btn-primary" id="btnProgress" style="display:none;">
-                                            Please wait...    <span class="spinner-border spinner-border-sm align-middle ms-2"></span>
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
+                        
                     </div>
                 </div> 
             </div>   
@@ -639,40 +585,6 @@
 		<script src="assets/js/widgets.bundle.js"></script>
 		<script src="assets/js/custom/widgets.js"></script>
 		<!--end::Custom Javascript-->
-        <script>
-            $('#frmAccount').on('submit',function(e)
-            {
-                e.preventDefault();
-                var data = $(this).serialize();
-                document.getElementById('btnRegister').style="display:none";
-                document.getElementById('btnProgress').style="display:block";
-                $.ajax({
-                    url:"<?=site_url('save-account')?>",method:"POST",data:data,
-                    success:function(response)
-                    {
-                        document.getElementById('btnRegister').style="display:block";
-                        document.getElementById('btnProgress').style="display:none";
-                        if(response==="success")
-                        {
-                            Swal.fire({
-                                title: "Great!",
-                                text: "Successfully added",
-                                icon: "success"
-                                });
-                            $('#frmAccount')[0].reset();
-                        }
-                        else
-                        {
-                            Swal.fire({
-                                title: "Invalid",
-                                text: response,
-                                icon: "warning"
-                            });
-                        }
-                    }
-                });
-            });
-        </script>
     </body>
     <!--end::Body-->
 </html>

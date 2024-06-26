@@ -15,21 +15,21 @@ class Auth extends BaseController
     {
         $accountModel = new \App\Models\accountModel();
 
-        $username = $this->request->getPost('email');
+        $username = $this->request->getPost('username');
         $password = $this->request->getPost('password');
 
         $validation = $this->validate([
-            'email'=>'required|valid_email',
+            'username'=>'required',
             'password'=>'required',
         ]);
         if(!$validation)
         {
-            session()->setFlashdata('fail','Invalid! Please enter your email and/or password');
+            session()->setFlashdata('fail','Invalid! Please enter your username and/or password');
             return redirect()->to('/')->withInput();
         }
         else
         {
-            $user_info = $accountModel->where('EmailAddress', $username)->WHERE('Status',1)->first();
+            $user_info = $accountModel->where('Username', $username)->WHERE('Status',1)->first();
             if(empty($user_info['accountID']))
             {
                 session()->setFlashdata('fail','Invalid! Account is not registered. Please contact IT Support');
