@@ -87,12 +87,12 @@ class Home extends BaseController
     {
         $accountModel = new \App\Models\accountModel();
         $accountID = $this->request->getPost('accountID');
-        $email = $this->request->getPost('email');
+        $username = $this->request->getPost('username');
         $fullname = $this->request->getPost('fullname');
         $designation = $this->request->getPost('designation');
         $role  = $this->request->getPost('role');
 
-        $values = ['EmailAddress'=>$email,'Fullname'=>$fullname,'Designation'=>$designation,'Role'=>$role];
+        $values = ['Username'=>$username,'Fullname'=>$fullname,'Designation'=>$designation,'Role'=>$role];
         $accountModel->update($accountID,$values);
         echo "success";
     }
