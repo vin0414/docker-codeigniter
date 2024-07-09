@@ -14,7 +14,7 @@ class Auth extends BaseController
     public function auth()
     {
         $accountModel = new \App\Models\accountModel();
-
+        $logModel = new \App\Models\logModel();
         $username = $this->request->getPost('username');
         $password = $this->request->getPost('password');
 
@@ -45,6 +45,10 @@ class Auth extends BaseController
                 }
                 else
                 {
+                    //save logs
+                    date_default_timezone_set('Asia/Manila');
+                    $values = ['accountID'=>$user_info['accountID'],'Date'=>date('Y-m-d H:i:s a'),'Activity'=>'Logged On'];
+                    $logModel->save($values);
                     session()->set('loggedUser', $user_info['accountID']);
                     session()->set('fullname', $user_info['Fullname']);
                     session()->set('role',$user_info['Role']);
@@ -56,6 +60,10 @@ class Auth extends BaseController
 
     public function logout()
     {
+        $logModel = new \App\Models\logModel();
+        date_default_timezone_set('Asia/Manila');
+        $values = ['accountID'=>session()->get('loggedUser'),'Date'=>date('Y-m-d H:i:s a'),'Activity'=>'Logged Out'];
+        $logModel->save($values);
         if(session()->has('loggedUser'))
         {
             session()->remove('loggedUser');
