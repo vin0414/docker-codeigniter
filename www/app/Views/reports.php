@@ -505,6 +505,7 @@
                     <a href="<?=site_url('upload')?>" class="btn btn-sm d-flex flex-stack border border-300 bg-gray-100i btn-color-gray-700 btn-active-color-gray-900 px-3 mb-2">               
                         <span class="d-flex align-item-center"><i class="fa-solid fa-upload"></i>&nbsp;&nbsp;&nbsp;Upload File</span>         
                     </a> 
+                    <?php if(session()->get('role')=="Administrator"){ ?>
 					<!--begin::Items-->
 					<div class="m-0">
                         <!--begin::Item-->
@@ -518,7 +519,8 @@
 						</a>  
 						<!--end::Item-->
 					</div>
-					<!--end::Items-->    
+					<!--end::Items--> 
+                    <?php } ?>   
 				</div>
 				<!--end::Filter-->
 					

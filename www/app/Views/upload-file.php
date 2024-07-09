@@ -491,6 +491,7 @@
                     <a href="<?=site_url('upload')?>" class="btn btn-sm d-flex flex-stack border border-300 bg-gray-100i btn-color-gray-700 btn-active-color-gray-900 px-3 mb-2">               
                         <span class="d-flex align-item-center"><i class="fa-solid fa-upload"></i>&nbsp;&nbsp;&nbsp;Upload File</span>         
                     </a> 
+                    <?php if(session()->get('role')=="Administrator"){ ?>
 					<!--begin::Items-->
 					<div class="m-0">
                         <!--begin::Item-->
@@ -504,7 +505,17 @@
 						</a>  
 						<!--end::Item-->
 					</div>
-					<!--end::Items-->    
+					<!--end::Items--> 
+                    <?php }?> 
+                    <!--begin::Items-->
+					<div class="m-0">
+                        <!--begin::Item-->
+						<a href="javascript:void(0);" class="btn btn-sm px-3 border border-transparent btn-color-gray-700 btn-active-color-gray-900">               
+                            <i class="fa-solid fa-book-open"></i>&nbsp;&nbsp;File Logs           
+						</a>  
+						<!--end::Item-->
+					</div>
+					<!--end::Items-->  
 				</div>
 				<!--end::Filter-->			
 			</div>
@@ -558,7 +569,26 @@
                 <!--end::Toolbar-->  
                 <div id="kt_app_content" class="app-content  flex-column-fluid " >
                     <div id="kt_app_content_container" class="app-container  container-fluid ">
-                        
+                        <div class="card card-flush py-4">
+                            <div class="card-body">
+                                <form method="POST" class="form w-100" id="frmUpload" enctype="multipart/form-data">
+                                    <div class="fv-row mb-8">
+                                        <!--begin::Email-->
+                                        <label class="required form-label">Attachment/File</label>
+                                        <input type="file" name="file" class="form-control bg-transparent" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" required/> 
+                                        <!--end::Email-->
+                                    </div>
+                                    <div class="fv-row mb-8">
+                                        <button type="submit" class="btn btn-primary" id="btnUpload">
+                                            <i class="fa-solid fa-upload"></i>&nbsp;Upload File
+                                        </button>
+                                        <button type="button" class="btn btn-primary" id="btnProgress" style="display:none;">
+                                            Please wait...   <span class="spinner-border spinner-border-sm align-middle ms-2"></span>
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
                     </div>
                 </div> 
             </div>   
