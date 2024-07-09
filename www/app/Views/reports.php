@@ -102,6 +102,7 @@
                                             <div  class="menu-sub menu-sub-lg-down-accordion menu-sub-lg-dropdown p-0 w-100 w-lg-850px" ><!--begin:Dashboards menu-->
                                             </div><!--end:Menu sub-->
                                         </div><!--end:Menu item-->
+                                        <?php if(session()->get('role')=="Administrator"){ ?>
 										<div  data-kt-menu-trigger="{default: 'click', lg: 'hover'}" data-kt-menu-placement="bottom-start"  class="menu-item menu-lg-down-accordion menu-sub-lg-down-indention me-0 me-lg-2" >
 											<span class="menu-link"><span  class="menu-title" >Apps</span>
                                             <span  class="menu-arrow d-lg-none" ></span></span>
@@ -155,6 +156,7 @@
                                                 </div><!--end:Menu item-->
                                             </div><!--end:Menu sub-->
                                         </div><!--end:Menu item-->
+                                        <?php } ?>
                                     </div>
                                     <!--end::Menu-->
                                 </div>
